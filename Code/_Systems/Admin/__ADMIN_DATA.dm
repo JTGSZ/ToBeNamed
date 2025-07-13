@@ -35,6 +35,11 @@ GLOB_LIST(admin_datums) = list()
 	if(C && C.ckey == ckey_of_owner)
 		linked_client = C
 		linked_client.admin_data = src
+
+		//Give debug rights ability to inspect the browser windows
+		if(ADMIN_RIGHTS_DEBUG in admin_rights)
+			winset(C, null, list("browser-options"="+devtools"))
+
 		add_admin_verbs_to_client()
 
 /*
@@ -43,6 +48,7 @@ GLOB_LIST(admin_datums) = list()
 */
 /datum/admin_data/proc/unlink_from_client()
 	if(linked_client)
+		winset(linked_client, null, list("browser-options"="-devtools"))
 		remove_admin_verbs_from_client()
 		linked_client.admin_data = null
 		linked_client = null

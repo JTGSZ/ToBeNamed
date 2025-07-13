@@ -61,6 +61,9 @@ GLOB_LIST(clients) = list()
 	if(preload_rsc == 0)
 		src_msg("If the title screen is black, resources are still downloading. Please be patient until the title screen appears.")
 
+	//Give our dear client some browser options, such as zooming, finding, and refresh, the debug rights give you inspect, and I don't think we need byondstorage right now.
+	winset(src, null, "browser-options=zoom,find,refresh")
+
 	//Admin Authorisation
 	var/static/list/localhost_addresses = list("127.0.0.1","::1")
 	if(CONFIG_SERVER_LOCALHOST_AUTOADMIN && (!address && !world.port) || (address in localhost_addresses))
