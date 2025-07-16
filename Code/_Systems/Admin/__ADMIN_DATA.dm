@@ -58,7 +58,6 @@ GLOB_LIST(admin_datums) = list()
 */
 
 /datum/admin_data/proc/add_admin_rights(admin_right_to_add)
-	world_msg("WE HIT")
 	if(islist(admin_right_to_add))
 		admin_rights |= admin_right_to_add
 	else if(istext(admin_right_to_add))

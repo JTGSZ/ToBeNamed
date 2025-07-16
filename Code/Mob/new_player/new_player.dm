@@ -23,8 +23,6 @@
 	. = ..()
 
 /mob/new_player/Login()
-	if(!player_mind)
-		player_mind = new /datum/player_mind(key)
 
 	if(GLOB.map_mark_list[MAPMARK_NEWPLAYERSTART] && islist(GLOB.map_mark_list[MAPMARK_NEWPLAYERSTART]))
 		if(GLOB.map_mark_list[MAPMARK_NEWPLAYERSTART].len)
@@ -47,7 +45,7 @@
 //But its basically us cramming this cunt into another mob.
 /mob/new_player/proc/transfer_into_soul()
 	var/mob/player_soul/new_soul = new(src.loc)
-	player_mind.full_transfer_to(new_soul)
+	new_soul.ckey = src.ckey
 	qdel(src)
 
 

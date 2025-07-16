@@ -109,5 +109,13 @@ GLOB_LIST(clients) = list()
 /client/proc/receive_message(datum/message_data/msg_data)
 	var/parsed_data = "[msg_data.message]"
 	to_client_chat(src, parsed_data)
+
+
+/client/proc/get_body()
+	var/mob/player_soul/our_soul = mob
+	if(our_soul)
+		return our_soul.the_body
+	else
+		return mob
 	
 

@@ -67,7 +67,6 @@
 #include "Code\_Systems\CommsCode\Comms_Outputs.dm"
 #include "Code\_Systems\CommsCode\Comms_Routing.dm"
 #include "Code\_Systems\CommsCode\Message_Data.dm"
-#include "Code\_Systems\player_mind\player_mind.dm"
 #include "Code\_Systems\Pooling\placeholder.dm"
 #include "Code\_Systems\RuntimeViewer\_WORLD_ERROR.dm"
 #include "Code\_Systems\RuntimeViewer\error_data.dm"

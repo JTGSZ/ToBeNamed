@@ -4,8 +4,6 @@ GLOB_LIST(mobs_in_world) = list()
 */
 /mob
 
-	//This basically just contains ic player information, this is made on a soul.
-	var/datum/player_mind/player_mind = null
 
 /*
 	Called when we are first created
