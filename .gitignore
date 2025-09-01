@@ -1,6 +1,22 @@
+##########################################################################################
+# If you are looking at this and don't know what it does                                 #
+# It just stops files from being tracked by git                                          #
+#                                                                                        #
+# If its continuing to track something you deleted that already existed beforehand       #
+# That means you get to enjoy the pleasure of cleaning it out of the commit history lmao #
+##########################################################################################
 
+
+# The sum of the assets or code packed up for live use
 *.dmb
 *.int
 *.rsc
 *.lk
+
+# While I would hope people don't constantly cram in the updated strongdmm binary for +20mb to the git history size each time, 
+# We can at least not mess with this
 zTools/StrongDMM/.StrongDMM.exe.old
+
+#BYOND internal configuration folder, remove this if you find a reason to want to store data from world.GetConfig() and world.SetConfig()
+#That is over your own implementations using other data formats elsewhere
+/cfg

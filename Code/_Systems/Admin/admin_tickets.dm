@@ -52,7 +52,7 @@ GLOB_VAR(datum/admin_ticket_holder/admin_tickets) = new()
 // String to display on the stats ticket panel
 	var/stat_string
 // The object on the stats panel 
-	var/obj/statclick/admin_ticket/statclick
+	var/obj/stat_click_object/admin_ticket/stat_click_object
 
 // The client who sent in the ticket
 	var/client/target_client
@@ -152,19 +152,19 @@ GLOB_VAR(datum/admin_ticket_holder/admin_tickets) = new()
 	our_window.fire_browser()
 
 /datum/admin_ticket/proc/stat_entry()
-	if(!statclick)
-		statclick = new /obj/statclick/admin_ticket("Initializing...", src)
-		statclick.linked_ticket = src
+	if(!stat_click_object)
+		stat_click_object = new /obj/stat_click_object/admin_ticket("Initializing...", src)
+		stat_click_object.linked_ticket = src
 
-	stat("#[ticket_number]:", statclick.update("<b>KEY:</b> [stat_string]"))
+	stat("#[ticket_number]:", stat_click_object.update_text("<b>KEY:</b> [stat_string]"))
 
 /*
 	The clickable stat button for the tickets
 */
-/obj/statclick/admin_ticket
+/obj/stat_click_object/admin_ticket
 	var/datum/admin_ticket/linked_ticket
 
-/obj/statclick/admin_ticket/Click()
+/obj/stat_click_object/admin_ticket/Click()
 	linked_ticket.display_menu(usr)
 
 

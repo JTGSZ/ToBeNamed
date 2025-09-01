@@ -11,7 +11,8 @@ var/list/superadmin_verbs = list(
 
 var/list/admin_verbs_debug = list(
     /client/proc/View_Runtimes,
-    /client/proc/View_Variable
+    /client/proc/View_Variable,
+    /client/proc/toggle_debugvision
 )
 
 /datum/admin_data/proc/add_admin_verbs_to_client()

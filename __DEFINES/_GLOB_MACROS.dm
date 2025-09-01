@@ -7,7 +7,9 @@
 	the VALUE can be set via GLOB_VAR(testcase) = FALSE
 	and then access would be GLOB.testcase
 */
-#define GLOB_VAR(varname) /datum/controller/global_holder/var/global/##varname
+#define GLOB_VAR(varname) /datum/fancy_stats/global_holder/var/global/##varname
 
-#define GLOB_LIST(listname) /datum/controller/global_holder/var/global/list/##listname
+#define GLOB_LIST(listname) /datum/fancy_stats/global_holder/var/global/list/##listname
+
+#define GLOB_ALIST(listname) /datum/fancy_stats/global_holder/var/global/alist/##listname
 

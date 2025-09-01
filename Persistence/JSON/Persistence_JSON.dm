@@ -1,6 +1,7 @@
 /*
 	Probably unnecessary but why not lol
 */
+var/global/list/persistence_by_id_cache = list()
 var/datum/Persistence_JSON/Persistence_Controller
 
 /datum/Persistence_JSON
@@ -31,9 +32,5 @@ var/datum/Persistence_JSON/Persistence_Controller
 	var/writing = file("[target_path]")
 	writing << json_encode(data_to_save)
 	return TRUE
-
-
-
-
 
 

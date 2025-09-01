@@ -17,6 +17,10 @@ GLOB_LIST(clients) = list()
 	var/list/movement_keymap = list() //The list of movement keys, mostly to allow movement while other shit is going on
 	var/list/held_keymap = list() // List of currently held down keys
 
+	//Sound related
+	var/alist/used_sound_channels = alist() // Sound channels that are in use
+	var/alist/audio_tracker_id_data = alist() // So you can find specific data tied to things that are sending noise
+
 /*
 	The whole chain is weird
 	Basically it firsts calls world/isBanned()
@@ -38,8 +42,6 @@ GLOB_LIST(clients) = list()
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
 		del(src)
 		return
-
-	..()	//calls mob.Login()
 
 	//Enter us into the clients global list.
 	GLOB.clients += src
@@ -78,6 +80,7 @@ GLOB_LIST(clients) = list()
 
 	//change client fps sometime, it will help their shit out
 	fps = (persist_data.client_fps < 0) ? CONFIG_PREF_RECC_CLIENT_FPS : persist_data.client_fps
+	..()	//calls mob.Login()
 
 
 	
@@ -119,3 +122,35 @@ GLOB_LIST(clients) = list()
 		return mob
 	
 
+/*
+	The client stats proc
+*/
+/client/Stat()
+	//admin stats panels
+	if(admin_data && inactivity < 1200)
+		if(statpanel("SS"))
+			stat("Location:", "([mob.x], [mob.y], [mob.z])")
+			stat("CPU:", "[world.cpu]")
+			stat("Total Instances in World:", "[world.contents.len]")
+			stat("Map CPU:", "[world.map_cpu]")
+			stat("Current Tick:", "[CURRENT_WORLD_TICK]")
+
+			stat(null) // Basically a blank space
+
+			//if(GLOB)
+			//	GLOB.stats_panel_entry()
+			for(var/datum/fancy_stats/FS as anything in fancy_stats)
+				FS.stats_panel_entry()
+
+			stat(null)
+
+			for(var/datum/world_slave_system/WSS as anything in world_slave_systems)
+				WSS.stats_display()
+
+		if(statpanel("Tickets"))
+			GLOB.admin_tickets.stat_entry()
+			stat(null)
+			for(var/datum/admin_ticket/cur_ticket in GLOB.admin_tickets.open_tickets)
+				cur_ticket.stat_entry()
+
+	..() // I believe this calls statobj.Stat(). wherein the statobj will be the client's mob by default

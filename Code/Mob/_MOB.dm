@@ -10,7 +10,11 @@ GLOB_LIST(mobs_in_world) = list()
 */
 /mob/New()
 	. = ..()
+
+/mob/Initialize()
+	..()
 	GLOB.mobs_in_world += src
+
 /*
 	Called when we are qdel'd
 */
@@ -49,6 +53,8 @@ GLOB_LIST(mobs_in_world) = list()
 /mob/receive_message(datum/message_data/msg_data)
 	if(client)
 		client.receive_message(msg_data)
+
+
 /*
 	A mob with a client clicked on an atom and supercalled. 
 	Let us give them a response on the instance of their type or near it
@@ -56,38 +62,5 @@ GLOB_LIST(mobs_in_world) = list()
 /mob/proc/clicked_an_atom(atom/A, params)
 	return
 
-// A stat panel if you are on a mob.
-/mob/Stat()
-	..()
-	//MC Stat Panel
-	if(client && client.admin_data && client.inactivity < 1200)
-		if(statpanel("MC"))
-			stat("Location:", "([x], [y], [z])")
-			stat("CPU:", "[world.cpu]")
-			stat("Total Instances in World:", "[world.contents.len]")
-			stat("Map CPU:", "[world.map_cpu]")
 
-			stat(null)
-			if(Master)
-				Master.stat_entry()
-			else
-				stat("Master Controller:", "ERROR")
-			if(Failsafe)
-				Failsafe.stat_entry()
-			else
-				stat("Failsafe Controller:", "ERROR")
-
-			if(GLOB)
-				GLOB.stat_entry()
-
-			if(Master)
-				stat(null)
-				for(var/datum/subsystem/SS in Master.subsystems)
-					SS.stat_entry()
-
-		if(statpanel("Tickets"))
-			GLOB.admin_tickets.stat_entry()
-			stat(null)
-			for(var/datum/admin_ticket/cur_ticket in GLOB.admin_tickets.open_tickets)
-				cur_ticket.stat_entry()
 	

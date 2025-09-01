@@ -34,7 +34,8 @@
 	else
 		shown_fps = persist_data.client_fps
 	html += "Current Client FPS: <a href='?src=\ref[src];change_client_fps=1'>[shown_fps]</a><br>"
-	
+	html += "Current Game Volume: <a href='?src=\ref[src];change_client_game_volume=1'>[persist_data.client_game_volume]%</a><br>"
+
 	our_window = new(requestor, "pref_ui", "Pref UI", 600, 450, src)
 	our_window.html_content = html
 	our_window.quickset_stylesheet(STYLESHEET_SS13_COMMON)
@@ -75,4 +76,12 @@
 			var/datum/player_persistence_data/found_data = Persistence_Controller.get_player_data(requestor.ckey)
 			found_data.client_fps = desiredfps
 			display_pref_ui_menu()
+
+	if(href_list["change_client_game_volume"])
+		var/datum/player_persistence_data/found_data = Persistence_Controller.get_player_data(requestor.ckey)
+		var/desired_vol = input(usr, "Choose your new game volume. \n1-100 (currently: [found_data.client_game_volume]%)", "Game Volume", found_data.client_game_volume) as null|num
+		desired_vol = clamp(desired_vol,0 ,100)
+		if(desired_vol)
+			found_data.client_game_volume = desired_vol
+		display_pref_ui_menu()
 			

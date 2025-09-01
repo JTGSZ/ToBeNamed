@@ -177,7 +177,6 @@
 	
 	target_user << browse(external_html_file, window_options) // Send it over
 
-
 //basically we stick a path to a eternal file in right here, it will be processed in the fire proc.
 //You could also just not use this helper, nothing special going on here.
 //Dom order is basically whether it loads the file in the head or bottom of body.

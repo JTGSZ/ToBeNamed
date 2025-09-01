@@ -1,5 +1,3 @@
-//Now has full inverted bitflag support!
-var/static/list/opposite_dirs = list(SOUTH,NORTH,NORTH|SOUTH,WEST,SOUTHWEST,NORTHWEST,NORTH|SOUTH|WEST,EAST,SOUTHEAST,NORTHEAST,NORTH|SOUTH|EAST,WEST|EAST,WEST|EAST|NORTH,WEST|EAST|SOUTH,WEST|EAST|NORTH|SOUTH)
 
 /client
 	var/mloop = 0
@@ -63,7 +61,6 @@ var/static/list/opposite_dirs = list(SOUTH,NORTH,NORTH|SOUTH,WEST,SOUTHWEST,NORT
 	if(src.mloop) 
 		return
 	mloop = 1
-	src.Move(mob.loc,true_dir)
 	while(src.true_dir)
 		sleep(world.tick_lag)
 		if(src.true_dir)

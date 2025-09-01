@@ -13,10 +13,14 @@
 // See: https://www.byond.com/docs/ref/#/client/var/preload_rsc
 #define CONFIG_SERVER_RSC_URL 1
 
+// When the server starts up it randomly picks a single song and then that becomes the lobby music. If its just random from the folder people won't really talk much
+// Set this to false If you want no music at all
+#define CONFIG_SERVER_TITLESCREEN_MUSIC_FOLDER "zAssets/Sounds/Audio_Error_Sound/" 
+
 //World config options
 #define CONFIG_WORLD_FPS 40 //Basically how fast we processin shit on the world's end
 #define CONFIG_WORLD_ICON_SIZE 32 //Size of the default icon, effects a buncha shit idc to figure out
-#define CONFIG_WORLD_VIEW 8 //Default viewport range, aka how many squares your player sees
+#define CONFIG_WORLD_VIEW 8 //Default viewport range, aka how many squares your player sees, this is outwards from the center so 8 radius would be 16x16 diameter
 #define CONFIG_WORLD_SLEEP_OFFLINE FALSE //If its set to true, the world just stops doing shit if nobody is on.
 
 //Persistence Config options
@@ -28,9 +32,13 @@
 
 //Pref Config options
 #define CONFIG_PREF_RECC_CLIENT_FPS 50 //If they set their fps to -1 you give them this value automatically
+#define CONFIG_PREF_DEFAULT_GAME_VOLUME 70 // 0 is nothing, and 100 is your eardrums playing russian roulette with random sfx
 
 //Gameplay config options
 
 //Debug options
-#define CONFIG_DEBUG_BYPASS_INITIAL_JOIN_MENUS TRUE// Just automatically sticks you into a body and avoids any initial join menus
+#define CONFIG_DEBUG_BYPASS_INITIAL_JOIN_MENUS TRUE // Just automatically sticks you into a body and avoids any initial join menus
+#define CONFIG_DEBUG_TRACE_PROCCALL_STACK_ON_ERROR FALSE // Will give you a entire proc call traced stack if a error occurs
+#define CONFIG_DEBUG_VV_LIST_DISPLAY_MAX 7 // How many things we display from a list on VV before we just offer the list viewer to stop the menu from getting spammed
+#define CONFIG_DEBUG_MAP_CHUNK_SIZE 8 // This basically is just how many turfs constitutes one map chunk mathematically for the map chunking datum
 

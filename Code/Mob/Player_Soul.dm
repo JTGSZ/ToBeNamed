@@ -11,16 +11,23 @@
 
 	//We a ghooost(soul)
 	alpha = 128
-	see_invisible = INVISIBILITY_SOULSPACE
+	see_invisible = INVISIBILITY_DEBUGGING_REALITY
 	invisibility = INVISIBILITY_SOULSPACE
 	
 	density = FALSE
-	give_comms_listener = TRUE
 	//The current body we are supposed to be piloting.
 	var/atom/movable/the_body = null
 
 /mob/player_soul/New(loc)
 	..()
+
+/mob/player_soul/Initialize()
+	..()
+
+	var/mob/comms_listener/CL = new()
+	CL.data_link_to_target(src)
+	CL.movement_link_to_target(src)
+	CL.toggle_flag(COMMS_FLAG_AUDIO)
 
 /mob/player_soul/MouseDrop(over_object, src_location, over_location, src_control, over_control, params)
 	//world_msg("[over_object]")

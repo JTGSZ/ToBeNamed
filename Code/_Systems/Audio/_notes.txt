@@ -1,0 +1,26 @@
+-Channels
+Byond allows your client to have 1024 sound channels
+Sounds default to either queueing or overwriting each other if in the same channel
+By default it will try to dole all them retards out on its own
+Which includes the sounds doling themselves out ontop of each other and forcing their predecessors silent
+
+Also the amount of sounds played at once without the client mangling them to sound like ass is way less than 1024
+
+-Sound Environments
+Setting a sound environment on any sound will make all sounds played to the client also share that environment
+Echo can be set per individual sound and also interacts with the environment settings apparently.
+So with this you could set environment for all sounds via any sound, and then use echo to remove chunks of it from any individual sound.
+
+-516 3D audio helpers (Atom) (3d Sound Source helper)
+Currently in 516 sound gained a new variable called atom which replaces needing to run a continuous loop for sfx apparently
+Problems with it I have found are the following.
+When the sound source (atom) moves it doesn't update their position relative to the client receiving it
+When the client receiving it loses sight of the sound source, it currently turns it off
+When they see it again it turns on
+If you have been sent a sound with atom linked to a sound source the moment you see where they have emitted it starts playing even if you were offscreen initially
+
+
+Supported file formats:
+MIDI - (.mid or .midi), 
+module formats - .mod, .it, .s3m, .xm, and .oxm  (These are pretty fun, theres even a big azz archive website for them https://modarchive.org/)
+Regular formats - .wav, .ogg, .mp3, .raw, .wma, and .aiff

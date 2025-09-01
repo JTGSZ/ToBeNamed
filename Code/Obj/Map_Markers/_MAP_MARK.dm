@@ -15,7 +15,7 @@ GLOB_LIST(map_mark_list) = list()
 	name = "Map Marker"
 	desc = "A marker for a MAP HEH"
 	// The map marker spirit cannot be seen, perceived, or interacted with
-	invisibility = INVISIBILITY_SPIRITSPACE
+	invisibility = INVISIBILITY_DEBUGGING_REALITY
 
 /obj/map_mark/New(loc)
 	handle_map_markers_list()

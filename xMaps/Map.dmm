@@ -2,12 +2,33 @@
 "a" = (
 /turf/floor,
 /area)
+"e" = (
+/obj/debug/dir_changer/east,
+/turf/floor,
+/area)
 "o" = (
 /obj/map_mark/new_player_start,
 /turf/floor,
 /area)
+"w" = (
+/obj/debug/sound_emitter,
+/turf/floor,
+/area)
+"E" = (
+/obj/debug/dir_changer/west,
+/turf/floor,
+/area)
 "J" = (
 /mob/humanoid,
+/turf/floor,
+/area)
+"P" = (
+/obj/debug/retarded_forced_movement_thing,
+/obj/debug/sound_emitter,
+/turf/floor,
+/area)
+"U" = (
+/mob/titlescreen_roamer,
 /turf/floor,
 /area)
 
@@ -337,7 +358,7 @@ a
 a
 a
 a
-a
+U
 a
 a
 a
@@ -456,7 +477,7 @@ a
 a
 a
 a
-a
+e
 a
 a
 a
@@ -498,8 +519,8 @@ a
 a
 a
 a
-a
-a
+P
+e
 a
 a
 a
@@ -757,7 +778,7 @@ a
 a
 a
 a
-a
+w
 a
 a
 a
@@ -1170,7 +1191,7 @@ a
 a
 a
 a
-a
+E
 a
 a
 a

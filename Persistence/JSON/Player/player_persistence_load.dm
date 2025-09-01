@@ -15,6 +15,7 @@
 		var/datum/player_persistence_data/player_data = new()
 		//And at this point heres where we like... stick all of it onto the datum.
 		player_data.client_fps = retrieved_data["client_fps"]
+		player_data.client_game_volume = retrieved_data["client_game_volume"]
 		player_data.input_keymap = retrieved_data["input_keymap"]
 
 		player_data.OOC_text_color = retrieved_data["OOC_text_color"]

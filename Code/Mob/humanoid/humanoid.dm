@@ -5,4 +5,3 @@
 /mob/humanoid
 	name ="Humanoid"
 	icon = 'zAssets/Mob/NewTanMale.dmi'
-	give_comms_listener = TRUE

@@ -27,6 +27,7 @@
 
 	//Now we handle the preference stuffs
 	data_to_save["client_fps"] = target_data.client_fps
+	data_to_save["client_game_volume"] = target_data.client_game_volume
 
 	//the input map, which is their keybinds
 	data_to_save["input_keymap"] = target_data.input_keymap

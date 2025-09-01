@@ -7,20 +7,27 @@
 	name = "ERROR"
 	desc = "If you see this then I fucked up"
 	icon = 'zAssets/Filler_Icons.dmi' 
-	
-	var/give_comms_listener = FALSE //can we take comms output? Most things 
-	var/mob/comms_listener/attached_comms_listener //slot for a listening object, a comms listening object.
 
-/atom/New()
-	if(give_comms_listener)
-		attached_comms_listener = new(src)
+// The first step in the process you make something new
+/atom/New(loc, ...)
+	. = ..()
+	// mapload is ogre, time to just initialize
+	if(mapload_ogre)
+		Initialize(arglist(args))
+		total_atoms_initialized++
+	else // mapload is not ogre, time to put our nice ass in a list
+		atoms_init_queue |= src
+		
+// A proc called after New() so we aren't stuck with timing problems in New()
+/atom/Initialize()
 	. = ..()
 
+/*
+	Called when you try to qdel something
+	Don't do it to turfs and areas
+*/
 /atom/Destroy()
 	..()
-	if(attached_comms_listener)
-		qdel(attached_comms_listener) //That'll actually handle all the refs (I hope)
-
 	invisibility = 101 //WE are trying to delete it, why let people even attempt to see or fucks with it
 	
 

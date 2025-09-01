@@ -7,13 +7,15 @@
 	if(href_list["window_closed"])
 		qdel(our_window)
 		our_window = null
+
 	if(href_list["TODO"])
 		world_msg("WE HIT A TODO IN VIEW_VARIABLE")
+
 	if(href_list["ListProcs"])
 		var/target_thing = locate(href_list["ListProcs"])
 		if(target_thing)
-			var/datum/ui/view_variable_proclist/fug = new(requestor, target_thing)
-			fug.show_proc_list()
+			show_proc_list(target_thing)
+
 	if(href_list["SetDirection"])
 		var/atom/target_thing = locate(href_list["SetDirection"])
 		if(target_thing)
@@ -39,8 +41,15 @@
 		if(target_object)
 			requestor.View_Variable(target_object)
 
-	if(href_list["TargetList"])
-		var/list/target_list = locate(href_list["TargetList"])
+	if(href_list["CallProc"])
+		var/target_proc = locate(href_list["proc_ref"])
+		var/target_of_proccall = locate("CallProc")
+		if(target_proc && target_of_proccall)
+			call_proc(requestor, target_of_proccall, target_proc)
+
+	if(href_list["ViewList"])
+		var/list/target_list = locate(href_list["ViewList"])
 //		list_debug_msg(target_list)
 //		assc_list_debug_msg(target_list)
-		display_assc_list(target_list)
+		VV_ListView(target_list)
+

@@ -7,23 +7,19 @@
 
 /datum
 
-/*
-	Also we don't have queue deletion yet mayb soon
-	Our Qdel pre-step, clean up ur references to other things here.
-*/
-/*
+	// alist that gets made when our boy gets his first hook added onto him
+	var/alist/proc_callhooks
+
+	// The status of the datum in the deletion tracker
+	var/gcDestroyed
+
+// Called when you use qdel()
 /datum/proc/Destroy()
+	gcDestroyed = "Bye, world!"
+	tag = null
+
+/datum/proc/Initialize()
 	return TRUE
 
-/*
-	Temp holder for when i finally put it in
-*/
-/proc/qdel(datum/del_target)
-	if(!del_target.Destroy())
-		world << "del_target didn't supercall in Destroy()"
-		del del_target
-	else
-		world << "del_target destroy chain complete."
-*/
 /datum/proc/Process()
 

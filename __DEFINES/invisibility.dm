@@ -17,7 +17,10 @@
 #define INVISIBILITY_SOULSPACE 80
 
 // this is the maximum we can go before special value
-#define INVISIBILITY_MAXIMUM 100
+#define INVISIBILITY_MAXIMUM 99
+
+// I would say to set everything to 101, but perhaps we need to debug everything
+#define INVISIBILITY_DEBUGGING_REALITY 100
 
 // this means you never see something as its a core part of something
 #define INVISIBILITY_SPIRITSPACE 101

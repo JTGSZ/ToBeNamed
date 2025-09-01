@@ -144,6 +144,11 @@ menu "menu"
 		command = ".display_input_ui"
 		category = "Options"
 	elem 
+		name = "&Change Game Volume"
+		command = ".change_game_volume"
+		category = "Options"
+		saved-params = "is-checked"
+	elem 
 		name = "&Misc Pref Options"
 		command = ".display_pref_ui"
 		category = "Options"

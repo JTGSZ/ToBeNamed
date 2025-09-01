@@ -1,0 +1,48 @@
+//Minimum for sound channels
+#define SOUND_CHANNEL_MIN 1
+//Maximum for sound channels
+#define SOUND_CHANNEL_MAX 1024
+
+// Maximum range sounds travel from the turf they are being sent from
+#define MAX_SOUND_RANGE 25
+
+//Channels reserved for static use I guess?
+//Start of the range
+#define RESERVED_CHANNEL_RANGE_START 924
+//End of the range
+#define RESERVED_CHANNEL_RANGE_END 1024
+
+//channel of el title screen
+#define TITLESCREEN_MUSIC_CHANNEL 1024
+
+
+//list of default sound environments
+//See: https://www.byond.com/docs/ref/index.html#/sound/var/environment
+// Environment starts at -1 by default
+#define SOUND_ENVIRONMENT_OFF_DEFAULT -1
+#define SOUND_ENVIRONMENT_GENERIC 0
+#define SOUND_ENVIRONMENT_PADDED_CELL 1
+#define SOUND_ENVIRONMENT_ROOM 2
+#define SOUND_ENVIRONMENT_BATHROOM 3
+#define SOUND_ENVIRONMENT_LIVINGROOM 4
+#define SOUND_ENVIRONMENT_STONEROOM 5
+#define SOUND_ENVIRONMENT_AUDITORIUM 6
+#define SOUND_ENVIRONMENT_CONCERT_HALL 7
+#define SOUND_ENVIRONMENT_CAVE 8
+#define SOUND_ENVIRONMENT_ARENA 9
+#define SOUND_ENVIRONMENT_HANGAR 10
+#define SOUND_ENVIRONMENT_CARPETED_HALLWAY 11
+#define SOUND_ENVIRONMENT_HALLWAY 12
+#define SOUND_ENVIRONMENT_STONE_CORRIDOR 13
+#define SOUND_ENVIRONMENT_ALLEY 14
+#define SOUND_ENVIRONMENT_FOREST 15
+#define SOUND_ENVIRONMENT_CITY 16
+#define SOUND_ENVIRONMENT_MOUNTAINS 17
+#define SOUND_ENVIRONMENT_QUARRY 18
+#define SOUND_ENVIRONMENT_PLAIN 19
+#define SOUND_ENVIRONMENT_PARKING_LOT 20
+#define SOUND_ENVIRONMENT_SEWER_PIPE 21
+#define SOUND_ENVIRONMENT_UNDERWATER 22
+#define SOUND_ENVIRONMENT_DRUGGED 23
+#define SOUND_ENVIRONMENT_DIZZY 24
+#define SOUND_ENVIRONMENT_PSYCHOTIC 25
