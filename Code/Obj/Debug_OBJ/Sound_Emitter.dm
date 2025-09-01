@@ -17,7 +17,7 @@
 
 
 /obj/debug/sound_emitter/proc/sound_play()
-	last_id = play_atom_emission_sound(src, 'zAssets/Sounds/testing_shit/test_slop1.ogg', 16, 100, TRUE)
+	last_id = play_atom_emission_sound(src, 'zAssets/Sounds/testing_shit/test_slop4.ogg', 16, 100, TRUE)
 
 
 /*
