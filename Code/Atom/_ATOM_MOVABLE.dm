@@ -14,6 +14,10 @@
 /atom/movable/New()
 	. = ..()
 
+/atom/movable/Initialize()
+	. = ..()
+	Last_loc = loc
+
 /*
 	Loc is a reference, on atom is apparently a constant value, so we nab it here right below obj and mob
 	Also make sure to cleanup all ur references

@@ -77,7 +77,6 @@
 #include "Code\_Systems\Fancy_NativeStats_UI\stat_click_object.dm"
 #include "Code\_Systems\global_holder\global_holder.dm"
 #include "Code\_Systems\map_chunking\map_chunkin_mk3.dm"
-#include "Code\_Systems\Pooling\placeholder.dm"
 #include "Code\_Systems\RuntimeViewer\__WORLD_ERROR.dm"
 #include "Code\_Systems\RuntimeViewer\_error_viewer.dm"
 #include "Code\_Systems\RuntimeViewer\error_data.dm"

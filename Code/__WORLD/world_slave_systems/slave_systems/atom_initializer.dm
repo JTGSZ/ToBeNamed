@@ -61,8 +61,3 @@ var/mapload_ogre = FALSE
 	var/msg = "Init Queue: [atoms_init_queue.len] |MAP INIT OVER: [mapload_ogre] Total Init: [total_atoms_initialized]"
 	..(msg)
 
-/mob/verb/debug_init_queue()
-	set name = "debug"
-
-	for(var/atom/i in atoms_init_queue)
-		world_msg("[i]")

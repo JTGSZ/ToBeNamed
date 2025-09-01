@@ -27,7 +27,6 @@
 
 	//Adjust for whatev the fuck the client has set on it, Its a percentage look at the divsion by 100 lol
 	SD.volume = SD.volume * persist_data.client_game_volume / 100
-
 	src << SD
 
 

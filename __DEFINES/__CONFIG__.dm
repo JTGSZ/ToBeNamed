@@ -38,7 +38,7 @@
 
 //Debug options
 #define CONFIG_DEBUG_BYPASS_INITIAL_JOIN_MENUS TRUE // Just automatically sticks you into a body and avoids any initial join menus
-#define CONFIG_DEBUG_TRACE_PROCCALL_STACK_ON_ERROR FALSE // Will give you a entire proc call traced stack if a error occurs
+#define CONFIG_DEBUG_TRACE_PROCCALL_STACK_ON_ERROR TRUE // Will give you a entire proc call traced stack if a error occurs
 #define CONFIG_DEBUG_VV_LIST_DISPLAY_MAX 7 // How many things we display from a list on VV before we just offer the list viewer to stop the menu from getting spammed
 #define CONFIG_DEBUG_MAP_CHUNK_SIZE 8 // This basically is just how many turfs constitutes one map chunk mathematically for the map chunking datum
 

@@ -110,8 +110,13 @@ GLOB_LIST(clients) = list()
 //And heres send_message's dumbass companion,
 //To note we are going to actually display this message in the client's chatbox from here, so might as well let things be different per client from client potentially
 /client/proc/receive_message(datum/message_data/msg_data)
-	var/parsed_data = "[msg_data.message]"
-	to_client_chat(src, parsed_data)
+	// there is audio data stuck onto the message, time for us to part ways text partner
+	if(msg_data.sound_data)
+		receive_sound_data(msg_data.sound_data)
+
+	if(msg_data.message)
+		var/parsed_data = "[msg_data.message]"
+		to_client_chat(src, parsed_data)
 
 
 /client/proc/get_body()
