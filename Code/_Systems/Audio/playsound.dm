@@ -109,8 +109,8 @@
 
 	var/client/C
 	if(isclient(target_client_or_mob))
-		SD.atom = C.mob
 		C = target_client_or_mob
+		SD.atom = C.mob
 		C.receive_sound_data(SD)
 		return
 	if(ismob(target_client_or_mob))
@@ -131,8 +131,8 @@
 
 	var/client/C
 	if(isclient(target_client_or_mob))
-		SD.atom = C.mob
 		C = target_client_or_mob
+		SD.atom = C.mob
 		C.receive_sound_data(SD)
 		return
 	if(ismob(target_client_or_mob))

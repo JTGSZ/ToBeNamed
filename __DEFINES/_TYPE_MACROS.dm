@@ -15,4 +15,4 @@
 #define isvector(A)	(istype(A, /vector))
 
 //You know how you have to do typesof minus itself so you don't get it in the dumb list heres a macro
-#define child_typesof(target_type) (typesof(target_type) - target_type)
+#define sub_typesof(target_type) (typesof(target_type) - target_type)

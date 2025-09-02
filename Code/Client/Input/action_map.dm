@@ -9,7 +9,7 @@ var/global/list/bindcomm_data_cache = list()
 	We build the cache
 */
 /proc/build_bindcomm_data_cache()
-	var/list/bindcomm_data_paths = child_typesof(/datum/bindcomm_data)
+	var/list/bindcomm_data_paths = sub_typesof(/datum/bindcomm_data)
 
 	for(var/juicy_phatties in bindcomm_data_paths)
 		var/datum/bindcomm_data/anime_thigh_inner_musculature = new juicy_phatties

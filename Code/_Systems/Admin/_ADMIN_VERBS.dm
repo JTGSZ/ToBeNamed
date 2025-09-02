@@ -2,6 +2,7 @@
 
 // lol
 var/list/admin_verbs_admin = list(
+    /client/proc/spawn_atom
 )
 
 var/list/superadmin_verbs = list(

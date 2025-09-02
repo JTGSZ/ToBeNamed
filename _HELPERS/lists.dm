@@ -1,4 +1,4 @@
-// This was ported from /tg/ with permission from Remmie, the author of this code.
+// This was ported from /tg/ with permission from Remie, the author of this code.
 /**
  * Like typesof() or subtypesof(), but returns a typecache instead of a list.
  *
@@ -17,7 +17,7 @@
 			.[path] = TRUE
 			return
 
-		for(var/subtype in (ignore_root_path ? child_typesof(path) : typesof(path)))
+		for(var/subtype in (ignore_root_path ? sub_typesof(path) : typesof(path)))
 			.[subtype] = TRUE
 		return
 
@@ -31,7 +31,7 @@
 			.[current_path] = TRUE
 	else if(ignore_root_path)
 		for(var/current_path in pathlist)
-			for(var/subtype in child_typesof(current_path))
+			for(var/subtype in sub_typesof(current_path))
 				.[subtype] = TRUE
 	else
 		for(var/current_path in pathlist)
@@ -135,6 +135,7 @@
 /proc/init_subtypes(prototype, list/L)
 	if(!istype(L))
 		L = list()
-	for(var/path in child_typesof(prototype))
+	for(var/path in sub_typesof(prototype))
 		L += new path()
 	return L
+

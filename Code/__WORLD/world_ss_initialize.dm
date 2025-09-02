@@ -20,7 +20,7 @@ var/global/list/world_slave_system_display_order
 	world_slave_system_firing_order = list()
 	world_slave_system_display_order = list()
 
-	for(var/path in child_typesof(/datum/world_slave_system))
+	for(var/path in sub_typesof(/datum/world_slave_system))
 		var/datum/world_slave_system/slave_to_the_system
 		slave_to_the_system = new path()
 		world_slave_systems += slave_to_the_system
