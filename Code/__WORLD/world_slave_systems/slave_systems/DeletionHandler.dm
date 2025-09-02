@@ -66,8 +66,12 @@ var/datum/world_slave_system/DeletionHandler/SSDeletionHandler
 				var/atom/movable/AM = D
 				AM.hard_deleted = 1
 
-			world_msg("[D] hard deleted, you left some hardrefs attached")
-			del D
+			if(CONFIG_DEBUG_QDEL_HARDREF_INFORM_MSG)
+				world_msg("[D] hard deleted, you left some hardrefs attached")
+			if(CONFIG_DEBUG_STOP_DEL_TURN_ON_REF_FIND)
+				Find_Ref(D)
+			else
+				del D
 			removeTrash(reference_id)
 			hard_deletions++
 
@@ -135,7 +139,7 @@ var/datum/world_slave_system/DeletionHandler/SSDeletionHandler
 	for(var/our_var_key in D.vars)
 		var/current_var = D.vars[our_var_key]
 		if(isdatum(current_var))
-			world_msg("Found a ref in ourselves")
+			world_msg("Found the ref of [D.type] in [D.type]")
 
 	for(var/atom/A in world)
 		for(var/var_key in A.vars)
@@ -144,12 +148,13 @@ var/datum/world_slave_system/DeletionHandler/SSDeletionHandler
 			var/current_thing = A.vars[var_key]
 
 			if(current_thing == D)
+				world_msg("Found the ref of [D.type] in [A.type]")
 				continue
 
 			if(islist(current_thing))
 				for(var/in_list as anything in current_thing)
 					if(in_list == D)
-						world_msg("Found the ref in [current_thing]")
+						world_msg("Found the ref of [D.type] in [A.type]")
 						continue
 				continue
 
@@ -165,4 +170,3 @@ var/datum/world_slave_system/DeletionHandler/SSDeletionHandler
 					continue
 				if(thing_in_global == D)
 					world_msg("Found the ref in [thing_in_global]")
-			
