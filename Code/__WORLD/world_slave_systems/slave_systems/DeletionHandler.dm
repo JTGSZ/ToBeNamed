@@ -41,7 +41,7 @@ var/datum/world_slave_system/DeletionHandler/SSDeletionHandler
 	SSDeletionHandler = src
 
 // the thing that was qdel'd gets this many seconds to live uselessly before it is forced to perish if it still exists
-#define TIMELIMIT_BEFORE_DEL (30 SECONDS)
+#define TIMELIMIT_BEFORE_DEL (CONFIG_GARBAGE_QDEL_QUEUE_DELAY_IN_SECONDS SECONDS)
 
 /datum/world_slave_system/DeletionHandler/Do_Work()
 	var/timelimit_before_forcedelete = world.timeofday - TIMELIMIT_BEFORE_DEL
@@ -66,12 +66,16 @@ var/datum/world_slave_system/DeletionHandler/SSDeletionHandler
 				var/atom/movable/AM = D
 				AM.hard_deleted = 1
 
-			if(CONFIG_DEBUG_QDEL_HARDREF_INFORM_MSG)
+			#ifdef CONFIG_GARBAGE_QDEL_HARDREF_INFORM_MSG
 				world_msg("[D] hard deleted, you left some hardrefs attached")
-			if(CONFIG_DEBUG_STOP_DEL_TURN_ON_REF_FIND)
+			#endif
+
+			#ifdef CONFIG_GARBAGE_STOP_DEL_TURN_ON_REF_FIND
 				Find_Ref(D)
-			else
+			#else
 				del D
+			#endif
+
 			removeTrash(reference_id)
 			hard_deletions++
 
@@ -139,22 +143,24 @@ var/datum/world_slave_system/DeletionHandler/SSDeletionHandler
 	for(var/our_var_key in D.vars)
 		var/current_var = D.vars[our_var_key]
 		if(isdatum(current_var))
-			world_msg("Found the ref of [D.type] in [D.type]")
+			world_msg("Found a ref of [current_var:type]:[ref(current_var)] in \"var/[our_var_key]\" - [D.type]:[ref(D)]")
 
 	for(var/atom/A in world)
+		if(A == D)
+			continue
 		for(var/var_key in A.vars)
 			if(var_key == "vars")
 				continue
 			var/current_thing = A.vars[var_key]
 
 			if(current_thing == D)
-				world_msg("Found the ref of [D.type] in [A.type]")
+				world_msg("Found the ref of [D.type]:[ref(D)] in \"var/[var_key]\" - [A.type]:[ref(A)]")
 				continue
 
 			if(islist(current_thing))
 				for(var/in_list as anything in current_thing)
 					if(in_list == D)
-						world_msg("Found the ref of [D.type] in [A.type]")
+						world_msg("Found the ref of [D.type]:[ref(D)] in \"var/[var_key]\" - [A.type]:[ref(A)]")
 						continue
 				continue
 
@@ -170,3 +176,4 @@ var/datum/world_slave_system/DeletionHandler/SSDeletionHandler
 					continue
 				if(thing_in_global == D)
 					world_msg("Found the ref in [thing_in_global]")
+			

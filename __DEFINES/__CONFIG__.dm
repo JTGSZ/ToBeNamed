@@ -40,9 +40,10 @@
 #define CONFIG_DEBUG_BYPASS_INITIAL_JOIN_MENUS TRUE // Just automatically sticks you into a body and avoids any initial join menus
 #define CONFIG_DEBUG_TRACE_PROCCALL_STACK_ON_ERROR TRUE // Will give you a entire proc call traced stack if a error occurs
 
-#define CONFIG_DEBUG_STOP_DEL_TURN_ON_REF_FIND FALSE // Will stop things from being del called in DeletionHandler when they are holding a hanging ref, and tries to track it
-#define CONFIG_DEBUG_QDEL_HARDREF_INFORM_MSG FALSE // Gives you a dumb little message If something can't be garbage collected
-
 #define CONFIG_DEBUG_VV_LIST_DISPLAY_MAX 7 // How many things we display from a list on VV before we just offer the list viewer to stop the menu from getting spammed
 #define CONFIG_DEBUG_MAP_CHUNK_SIZE 8 // This basically is just how many turfs constitutes one map chunk mathematically for the map chunking datum
 
+// Garbage handling config options - you want to uncomment some of these it causes the def to insert code
+//#define CONFIG_GARBAGE_STOP_DEL_TURN_ON_REF_FIND // Will stop things from being del called in DeletionHandler when they are holding a hanging ref, and tries to track it
+//#define CONFIG_GARBAGE_QDEL_HARDREF_INFORM_MSG // Gives you a dumb little message If something can't be garbage collected
+#define CONFIG_GARBAGE_QDEL_QUEUE_DELAY_IN_SECONDS 2 // How many seconds before the deletionhandler will just call del on something being tracked
