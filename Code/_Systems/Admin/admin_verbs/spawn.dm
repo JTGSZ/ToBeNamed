@@ -15,9 +15,14 @@
 	if(isnull(user_input))
 		return
 
-	var/chosen_type_path_str = input("Spawn one of these") as null|anything in find_type_and_close_types(user_input)
-	if(chosen_type_path_str)
-		var/actual_path = text2path(chosen_type_path_str)
+	var/chosen_type_path = input("Spawn one of these") as null|anything in find_type_and_close_types(user_input)
+	if(chosen_type_path)
+		var/actual_path
+		if(!ispath(chosen_type_path))
+			actual_path = text2path(chosen_type_path)
+		else // you just get actual paths if you put in a blank lol
+			actual_path = chosen_type_path
+
 		var/atom/A
 		if(isturf(actual_path))
 			TODO("Make spawn atom work with turfs, as we have to swap one turf out for another and make sure everything is handled")
@@ -43,6 +48,10 @@ var/global/list/retarded_shortcuts = list(
 	// We got a total list of all atoms here, now... we were also given a string, it could be anything in there man also let us only do this once
 	if(isnull(retarded_all_types_cache))
 		retarded_all_types_cache = typesof(/atom)
+
+	// they put in a blank, so we deliver unto them the retarded all types cache
+	if(THE_STRING_WORD == "")
+		return retarded_all_types_cache
 
 	// Now we need to see if they typed in something exact, and if not we need to give them the most relevant options my retarded ass can muster
 	. = list()
